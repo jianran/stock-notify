@@ -84,7 +84,7 @@ public class StockPriceMonitorService {
         long minDiff = Long.MAX_VALUE;
 
         for (PricePoint point : history) {
-            long diff = Math.abs(point.timestamp().toInstant().toEpochMilli() - oneHourAgo.toInstant().toEpochMilli());
+            long diff = Math.abs(point.timestamp().toInstant(java.time.ZoneOffset.UTC).toEpochMilli() - oneHourAgo.toInstant(java.time.ZoneOffset.UTC).toEpochMilli());
             if (diff < minDiff) {
                 minDiff = diff;
                 priceOneHourAgo = point.price();
