@@ -7,9 +7,9 @@ class StockPriceDataTest {
 
     @Test
     void shouldNotifyWhenPriceDropsMoreThan3Percent() {
-        StockPriceData data = new StockPriceData("AAPL", 100, 103);
+        StockPriceData data = new StockPriceData("AAPL", 96, 100);
         assertTrue(data.isShouldNotify());
-        assertEquals(2.91, data.getPercentChange(), 0.01);
+        assertEquals(4.0, data.getPercentChange(), 0.01);
     }
 
     @Test
