@@ -61,7 +61,7 @@ public class StockPriceMonitorService {
         return restTemplate.getForObject(url, AlphaVantageResponse.class);
     }
 
-    private void addToHistory(String symbol, double price) {
+    public void addToHistory(String symbol, double price) {
         priceHistory.computeIfAbsent(symbol, k -> new ArrayList<>());
         priceHistory.get(symbol).add(new PricePoint(LocalDateTime.now(), price));
 
@@ -71,7 +71,7 @@ public class StockPriceMonitorService {
         history.removeIf(point -> point.timestamp().isBefore(twoHoursAgo));
     }
 
-    private StockPriceData analyzePriceDrop(String symbol) {
+    public StockPriceData analyzePriceDrop(String symbol) {
         List<PricePoint> history = priceHistory.get(symbol);
         if (history.size() < 2) return null;
 
