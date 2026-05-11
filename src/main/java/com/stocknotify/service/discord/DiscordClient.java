@@ -37,10 +37,12 @@ public class DiscordClient {
             String jsonPayload = objectMapper.writeValueAsString(payload);
 
             HttpEntity<Map<String, Object>> request = new HttpEntity<>(payload, headers);
-            restTemplate.postForObject(channelUrl, request, String.class);
+            @SuppressWarnings("unchecked")
+            Map<String, Object> channelResponse = restTemplate.postForObject(channelUrl, request, Map.class);
+            String channelId = (String) channelResponse.get("id");
 
             // Send message to the channel
-            String messageUrl = "https://discord.com/api/v10/channels/" + userId + "/messages";
+            String messageUrl = "https://discord.com/api/v10/channels/" + channelId + "/messages";
             Map<String, String> messagePayload = Map.of("content", message);
 
             HttpHeaders messageHeaders = new HttpHeaders();
