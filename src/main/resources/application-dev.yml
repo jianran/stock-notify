@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: dev
+
+stock:
+  symbols:
+    - AAPL
+    - GOOGL
+    - MSFT
+  alpha-vantage-api-key: ${ALPHA_VANTAGE_API_KEY:your_dev_api_key}
+  check-interval-minutes: 10
+
+discord:
+  bot-token: ${DISCORD_BOT_TOKEN:your_dev_bot_token}
+  user-id: ${DISCORD_USER_ID:your_dev_user_id}

@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: stock-notify
+
+server:
+  port: 8080
+
+stock:
+  symbols:
+    - AAPL
+    - GOOGL
+    - MSFT
+    - TSLA
+    - NVDA
+  alpha-vantage-api-key: YOUR_ALPHA_VANTAGE_API_KEY
+  drop-threshold: 3.0
+  check-interval-minutes: 10
+  history-window-hours: 1
+
+discord:
+  bot-token: YOUR_DISCORD_BOT_TOKEN
+  user-id: YOUR_DISCORD_USER_ID
+
+logging:
+  level:
+    com.stocknotify: DEBUG

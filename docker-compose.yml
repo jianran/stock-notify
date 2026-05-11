@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  stock-notify:
+    build: .
+    container_name: stock-notify
+    restart: unless-stopped
+    environment:
+      - ALPHA_VANTAGE_API_KEY=${ALPHA_VANTAGE_API_KEY}
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - DISCORD_USER_ID=${DISCORD_USER_ID}
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    networks:
+      - stock-network
+
+networks:
+  stock-network:
+    driver: bridge

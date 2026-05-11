@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: prod
+
+logging:
+  level:
+    com.stocknotify: INFO
+
+stock:
+  check-interval-minutes: 10
+  drop-threshold: 3.0
+  history-window-hours: 1
+
+discord:
+  bot-token: ${DISCORD_BOT_TOKEN}
+  user-id: ${DISCORD_USER_ID}
